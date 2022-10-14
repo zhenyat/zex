@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name:     ProductOne
+  title:    'Product One'
+  price:    100.0
+  quantity: 10
+  status:   1
+
+two:
+  name:   ProductTwo
+  title:  'Product Two'
+  price:  0.
+  quantity: 0
+  status: 0

@@ -103,7 +103,7 @@ group :test do
   gem "selenium-webdriver"
   gem 'webdrivers'        # replaced chromedriver-helper after 2019-03-31
 
-  # gem 'shoulda'
+  gem 'shoulda'
   # gem 'minitest-reporters'
   # gem 'mini_backtrace'
   # gem 'guard'
