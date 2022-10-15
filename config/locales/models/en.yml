@@ -16,6 +16,9 @@ en:
       company:
         one:                    Campany
         other:                  Companies
+      dotcom:
+        one:                    Dotcom
+        other:                  Dotcoms
       partner:
         one:                    Partner
         other:                  Partners
@@ -90,6 +93,9 @@ en:
         seo_title:              SEO Title
         seo_description:        SEO Description
         seo_keywords:           SEO Keywords
+      dotcom:
+        name:                   Name
+        title:                  Title
       partner:
         name:                   Name
         code:                   Code

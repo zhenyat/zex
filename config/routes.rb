@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       root 'panel#index'                                 # admin_root_path
       resources :users
       resources :samples
+      resources :dotcoms
       # Add new admin resources before this line
     end
 

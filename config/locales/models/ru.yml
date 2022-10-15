@@ -50,3 +50,6 @@ ru:
         price:                  Цена
         quantity:               Количество
         status:                 Статус
+      dotcom:
+        name:                   Имя
+        title:                  Наименование
