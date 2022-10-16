@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_15_195539) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_16_063423) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +52,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_195539) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "apis", force: :cascade do |t|
+    t.bigint "dotcom_id", null: false
+    t.integer "mode", limit: 2, default: 0, null: false
+    t.string "base_url"
+    t.string "path"
+    t.string "key"
+    t.string "secret"
+    t.string "user"
+    t.integer "status", limit: 2, default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dotcom_id"], name: "index_apis_on_dotcom_id"
+  end
+
   create_table "dotcoms", force: :cascade do |t|
     t.string "name", null: false
     t.string "title", null: false
@@ -88,4 +102,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_195539) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "apis", "dotcoms"
 end

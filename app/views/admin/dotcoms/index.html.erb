@@ -3,6 +3,7 @@
   <thead>
       <th><%= Dotcom.human_attribute_name(:name) %></th>
       <th><%= Dotcom.human_attribute_name(:title) %></th>
+      <th><%= Dotcom.human_attribute_name(:avatar) %></th>
       <th><%= t 'status.status' %></th>
       <th><%= t 'actions.actions' %><th>
   </thead>
@@ -12,6 +13,11 @@
       <tr>
         <td><%= dotcom.name %></td>
         <td><%= dotcom.title %></td>
+        <% if dotcom.avatar.attached? %>
+          <td ><%= image_tag dotcom.avatar.variant(resize_to_limit: [60, 60]) %></td>
+        <% else %>
+          <td></td>
+        <% end %>
         <td><%= status_mark dotcom.status %></td>
         <td><%= render 'admin/shared/index_buttons', resource: dotcom %></td>
       </tr>
