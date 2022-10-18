@@ -7,9 +7,15 @@ en:
       account:
         one:                    Account
         other:                  Accounts
+      api:
+        one:                    API
+        other:                  API    
       bank:
         one:                    Bank
         other:                  Banks
+      call:
+        one:                    Call
+        other:                  Calls
       category:
         one:                    Category
         other:                  Categories

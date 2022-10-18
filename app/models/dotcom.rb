@@ -1,12 +1,15 @@
 ################################################################################
 # Model:  Dotcom
 #
-# Purpose:
+# Purpose:  ZEX platforms
 #
 # Dotcom attributes:
-#   name              - string,  not NULL, unique
-#   title             - string,  not NULL
-#   status            - enum { active (0) | archived (1) }
+#   name    - string,  not NULL, unique
+#   title   - string,  not NULL
+#   status  - enum { active (0) | archived (1) }
+#
+#   avatar  - ActiveStorage image
+#   content - Active Text attachement
 #
 #  15.10.2022 ZT
 ################################################################################

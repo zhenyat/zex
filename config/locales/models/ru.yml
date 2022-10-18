@@ -7,6 +7,12 @@ ru:
       account:
         one:                    Учетная запись
         other:                  Учетные записи
+      api:
+        one:                    API
+        other:                  API 
+      call:
+        one:                    Call
+        other:                  Calls
       category:
         one:                    Категория
         other:                  Категории

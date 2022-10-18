@@ -1,7 +1,7 @@
 ################################################################################
 # Model:  Api
 #
-# Purpose:
+# Purpose:  Dotcoms' APIs
 #
 # Api attributes:
 #   dotcom_id   - FK

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_16_063423) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_18_124756) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -66,6 +66,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_16_063423) do
     t.index ["dotcom_id"], name: "index_apis_on_dotcom_id"
   end
 
+  create_table "calls", force: :cascade do |t|
+    t.bigint "api_id", null: false
+    t.string "name", null: false
+    t.string "title", null: false
+    t.string "link"
+    t.integer "status", limit: 2, default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["api_id"], name: "index_calls_on_api_id"
+    t.index ["name"], name: "index_calls_on_name", unique: true
+  end
+
   create_table "dotcoms", force: :cascade do |t|
     t.string "name", null: false
     t.string "title", null: false
@@ -103,4 +115,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_16_063423) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "apis", "dotcoms"
+  add_foreign_key "calls", "apis"
 end

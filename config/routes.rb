@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       resources :samples
       resources :dotcoms
       resources :apis
+      resources :calls
       # Add new admin resources before this line
     end
 
