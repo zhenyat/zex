@@ -72,5 +72,4 @@ module ZexHelper
     end 
     content_tag :table, tbody, class: "table table-hover"
   end
-
 end

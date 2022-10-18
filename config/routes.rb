@@ -9,9 +9,6 @@
 #   16.03.2022  Rails 7
 ################################################################################
 Rails.application.routes.draw do
-  get 'demo/index'
-  get 'demo/api_calls'
-  get 'demo/candlesticks'
 
   app_scope = MULTILINGUAL ? "/:locale" : "/"
   scope app_scope, locale: /#{I18n.available_locales.join("|")}/ do
@@ -32,8 +29,14 @@ Rails.application.routes.draw do
       # Add new admin resources before this line
     end
 
-    root      'pages#home'                               # root_path
-    resources  :samples
+    root 'pages#home'
+    get  :demo,             to: 'demo#index',            path: 'demo'
+    get  :api_calls,        to: 'demo#api_calls',        path: 'api_calls'
+    get  :api_candlesticks, to: 'demo#api_candlesticks', path: 'api_candlesticks'
+    get  :api_trades,       to: 'demo#api_trades',       path: 'api_trades'
+    get  :candlesticks,     to: 'candlesticks#index',    path: 'candlesticks'
+    get  :demo_chart,       to: 'demo#chart',            path: 'demo_chart'
+    get  :demo_import,      to: 'demo#import',           path: 'demo_import'
   end
 
   if MULTILINGUAL
