@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       resources :dotcoms
       resources :apis
       resources :calls
+      resources :coins
       # Add new admin resources before this line
     end
 

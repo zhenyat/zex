@@ -19,6 +19,9 @@ en:
       category:
         one:                    Category
         other:                  Categories
+      сoin:
+        one:                    Coin
+        other:                  Coins        
       company:
         one:                    Campany
         other:                  Companies

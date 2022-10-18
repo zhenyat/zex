@@ -11,11 +11,14 @@ ru:
         one:                    API
         other:                  API 
       call:
-        one:                    Call
-        other:                  Calls
+        one:                    Запрос
+        other:                  Запросы
       category:
         one:                    Категория
         other:                  Категории
+      сoin:
+        one:                    Монета
+        other:                  Монеты
       product:
         one:                    Товар
         other:                  Товары
