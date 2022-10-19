@@ -19,18 +19,21 @@ en:
       category:
         one:                    Category
         other:                  Categories
-      сoin:
-        one:                    Coin
-        other:                  Coins        
-      сoin_nickname:
-        one:                    Coin Nickname
-        other:                  Coin Nicknames
+      coin:
+        one:                    Currency
+        other:                  Currencies        
+      coin_nickname:
+        one:                    Currency Nickname
+        other:                  Currency Nicknames
       company:
         one:                    Campany
         other:                  Companies
       dotcom:
         one:                    Dotcom
         other:                  Dotcoms
+      pair:
+        one:                    Currency Pair
+        other:                  Currency Pairs
       partner:
         one:                    Partner
         other:                  Partners

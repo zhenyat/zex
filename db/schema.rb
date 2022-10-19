@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_19_061507) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_19_063649) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -107,6 +107,25 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_19_061507) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_dotcoms_on_name", unique: true
+  end
+
+  create_table "pairs", force: :cascade do |t|
+    t.bigint "base_id"
+    t.bigint "quote_id"
+    t.string "code", null: false
+    t.integer "level", limit: 2, default: 0, null: false
+    t.integer "decimal_places"
+    t.decimal "min_price", precision: 10, scale: 5
+    t.decimal "max_price", precision: 10, scale: 5
+    t.decimal "min_amount", precision: 10, scale: 5
+    t.boolean "hidden", default: false
+    t.decimal "fee", precision: 5, scale: 2
+    t.integer "status", limit: 2, default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["base_id"], name: "index_pairs_on_base_id"
+    t.index ["code"], name: "index_pairs_on_code", unique: true
+    t.index ["quote_id"], name: "index_pairs_on_quote_id"
   end
 
   create_table "samples", force: :cascade do |t|

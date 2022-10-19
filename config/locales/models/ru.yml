@@ -16,12 +16,15 @@ ru:
       category:
         one:                    Категория
         other:                  Категории
-      сoin:
-        one:                    Монета
-        other:                  Монеты
-      сoin_nickname:
-        one:                    Псевдоним монеты
-        other:                  Псевдонимы монет
+      coin:
+        one:                    Валюта
+        other:                  Валюты
+      coin_nickname:
+        one:                    'Псевдоним валюты'
+        other:                  'Псевдонимы валют'
+      pair:
+        one:                    Валютная пара
+        other:                  Валютные пары
       product:
         one:                    Товар
         other:                  Товары
