@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_18_134622) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_19_061507) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -78,6 +78,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_18_134622) do
     t.index ["name"], name: "index_calls_on_name", unique: true
   end
 
+  create_table "coin_nicknames", force: :cascade do |t|
+    t.bigint "coin_id", null: false
+    t.string "name", null: false
+    t.integer "status", limit: 2, default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coin_id"], name: "index_coin_nicknames_on_coin_id"
+    t.index ["name"], name: "index_coin_nicknames_on_name", unique: true
+  end
+
   create_table "coins", force: :cascade do |t|
     t.string "name", null: false
     t.string "code", null: false
@@ -128,4 +138,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_18_134622) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "apis", "dotcoms"
   add_foreign_key "calls", "apis"
+  add_foreign_key "coin_nicknames", "coins"
 end

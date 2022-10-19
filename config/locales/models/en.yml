@@ -22,6 +22,9 @@ en:
       сoin:
         one:                    Coin
         other:                  Coins        
+      сoin_nickname:
+        one:                    Coin Nickname
+        other:                  Coin Nicknames
       company:
         one:                    Campany
         other:                  Companies

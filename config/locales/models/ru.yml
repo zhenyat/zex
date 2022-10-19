@@ -19,6 +19,9 @@ ru:
       сoin:
         one:                    Монета
         other:                  Монеты
+      сoin_nickname:
+        one:                    Псевдоним монеты
+        other:                  Псевдонимы монет
       product:
         one:                    Товар
         other:                  Товары
