@@ -20,11 +20,14 @@ ru:
         one:                    Валюта
         other:                  Валюты
       coin_nickname:
-        one:                    'Псевдоним валюты'
-        other:                  'Псевдонимы валют'
+        one:                    Псевдоним валюты
+        other:                  Псевдонимы валюты
       pair:
         one:                    Валютная пара
         other:                  Валютные пары
+      pair_nickname:
+        one:                    Псевдоним валютной пары
+        other:                  Псевдонимы валютной пары
       product:
         one:                    Товар
         other:                  Товары

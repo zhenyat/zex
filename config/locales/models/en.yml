@@ -34,6 +34,9 @@ en:
       pair:
         one:                    Currency Pair
         other:                  Currency Pairs
+      pair_nickname:
+        one:                    Currency Pair Nickname
+        other:                  Currency Pair Nicknames
       partner:
         one:                    Partner
         other:                  Partners
