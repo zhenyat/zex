@@ -23,6 +23,7 @@ class Pair < ApplicationRecord
   has_many :pair_nicknames, dependent: :destroy
   has_many :candlesticks, dependent: :destroy
   has_and_belongs_to_many :dotcoms, join_table: :dotcoms_pairs
+  
   # has_many   :trades
 
   enum level:  %w(Major Minor Exotic)
