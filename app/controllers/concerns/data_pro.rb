@@ -11,8 +11,8 @@ module DataPro
   ##############################################################################
   def add_trades pair, limit=5000
     
-    max_tid   = Trade.where(pair_id: pair.id).maximum(:tid)
-    max_tid   = 0 if max_tid.nil? 
+    max_x_id  = Trade.where(pair_id: pair.id).maximum(:x_id)
+    max_x_id  = 0 if max_x_id.nil? 
     add_count = 0
     
     ### Get data from the Dotcom
@@ -20,14 +20,14 @@ module DataPro
     trades = ZtBtce.trades pairs: pair.name, limit: limit   # Hash of deals for key 'pair'
 
     if trades.present?
-      deals = trades.values.first.reverse                   # new deals as a hash array (last - the latest tid) 
+      deals = trades.values.first.reverse                   # new deals as a hash array (last - the latest x_id) 
       
       ### Save data 
       deals.each do |deal|
-        if deal['tid'] > max_tid
+        if deal['x_id'] > max_x_id
           kind = (deal['type'] == 'ask') ? 0 : 1            # sell | buy 
           Trade.create! pair_id: pair.id,       kind: kind,        price:     deal['price'],
-                        amount: deal['amount'], tid:  deal['tid'], timestamp: deal['timestamp']
+                        amount: deal['amount'], x_id:  deal['x_id'], timestamp: deal['timestamp']
           add_count += 1 
         end
       end
@@ -185,7 +185,7 @@ module DataPro
       since       = candle_last.first.to_time
 
       model = set_model_name pair_name
-      trades = model.where('timestamp >= ?', since.to_i).order(:tid)  # Add new trades
+      trades = model.where('timestamp >= ?', since.to_i).order(:x_id)  # Add new trades
 
       time_frame = []                                 # Limits of time frame (min / max)
       time_frame = set_time_frame (since - TIME_SLOT), TIME_SLOT

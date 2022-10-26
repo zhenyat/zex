@@ -41,8 +41,12 @@ Rails.application.routes.draw do
     get  :candlesticks,     to: 'candlesticks#index',    path: 'candlesticks'
     get  :demo_chart,       to: 'demo#chart',            path: 'demo_chart'
     get  :demo_import,      to: 'demo#import',           path: 'demo_import'
+
+    get  :trades_index,      to: 'trades#index',         path: 'trades'
+    get  :trades_import,     to: 'trades#import',        path: 'trades_import'
   end
 
+  
   if MULTILINGUAL
     # Root route is directed to default locale
     root to: redirect("/#{I18n.default_locale}", status: 302), as: :redirected_root
