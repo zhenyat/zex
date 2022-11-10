@@ -41,7 +41,8 @@
   <% if @response[:error].nil? %>
     <h6>Reponse</h6>
     <div class="block mb-4 bg-success" style="--bs-bg-opacity: .5;">
-      <%= @response %>
+      <%#= @response %>
+      <%=ap(@response, plain: true, indent: 2).html_safe %>
     </div>
   <% else %>
     <span class="badge mb-4 bg-danger fs-6">

@@ -92,7 +92,8 @@ end
     gem 'solargraph'
     gem 'foreman'
     gem 'web-console'        # Access an IRB console on exception pages or by using <%= console %> in views
-
+    gem 'awesome_print'
+    
   # gem "rack-mini-profiler"  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "spring"             # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   end

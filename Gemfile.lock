@@ -78,6 +78,7 @@ GEM
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
+    awesome_print (1.9.2)
     backport (1.2.0)
     bcrypt (3.1.18)
     benchmark (0.2.0)
@@ -315,6 +316,7 @@ PLATFORMS
   x86_64-darwin-21
 
 DEPENDENCIES
+  awesome_print
   bcrypt
   bootsnap
   capybara
