@@ -40,12 +40,12 @@
 
   <% if @response[:error].nil? %>
     <h6>Reponse</h6>
-    <div class="bg-success" style="--bs-bg-opacity: .5;">
-      <%= pp @response %>
+    <div class="block mb-4 bg-success" style="--bs-bg-opacity: .5;">
+      <%= @response %>
     </div>
   <% else %>
-    <span class="badge bg-danger">
-      <%= @response %>
+    <span class="badge mb-4 bg-danger fs-6">
+      <pre><%= @response[:error] %></pre>
     </span>
   <% end %>
 <% end %>

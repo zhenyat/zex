@@ -37,12 +37,12 @@ module Request
       begin
         response = Net::HTTP.get(self.uri)
       rescue StandardError => e
-        {:error => e}
+        {error: e}
       else
         begin 
           JSON.parse response     # => Hash
         rescue
-          "HTTP.get(#{self.uri}) failed" 
+          {error: "HTTP.get(#{self.uri}) failed"} 
         end
       end
     end
