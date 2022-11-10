@@ -44,6 +44,8 @@ Rails.application.routes.draw do
 
     get  :trades_index,      to: 'trades#index',         path: 'trades'
     get  :trades_import,     to: 'trades#import',        path: 'trades_import'
+
+    get  :slots,            to: 'candlesticks#slots',    path: 'slots'
   end
 
   

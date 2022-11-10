@@ -20,8 +20,8 @@ class DemoController < ApplicationController
       @calls  = @api&.calls || []   # ActiveRecord::Associations::CollectionProxy of ApiMethods
     end
 
-    request = GetRequest.new(dotcom: @dotcom, api: @api, call: @call)
-    @response = request.send
+    @request  = GetRequest.new(dotcom: @dotcom, api: @api, call: @call)
+    @response = @request.send
   end
 
   def api_candlesticks

@@ -1,5 +1,6 @@
 module Request
   extend ActiveSupport::Concern
+  require 'net/http'
 
   class  Request
     def initialize dotcom:, api:, call:, extension: nil, options: {}
@@ -10,20 +11,20 @@ module Request
       @options   = options
     end
 
-    def dotcom
-      @dotcom.presence
-    end
-
     def api
       @api.presence
     end
 
-    def extension
-      @extension.presence
-    end
-
     def call
       @call.presence
+    end
+
+    def dotcom
+      @dotcom.presence
+    end
+
+    def extension
+      @extension.presence
     end
 
     def options
@@ -36,7 +37,7 @@ module Request
       begin
         response = Net::HTTP.get(self.uri)
       rescue StandardError => e
-        {:success => 0, :error => e}
+        {:error => e}
       else
         begin 
           JSON.parse response     # => Hash

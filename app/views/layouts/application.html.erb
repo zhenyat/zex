@@ -14,9 +14,11 @@
     <%= render 'shared/shim' %>
   </head>
 
-  <body class="bg-success p-2 text-dark bg-opacity-10">
-    <%= render 'shared/top_navigation' %>
-    <%= yield %>
-  </body>
-  <%= render 'shared/footer' %>
+  <div class='container'>
+    <body class="bg-success p-2 text-dark bg-opacity-10">
+      <%= render 'shared/top_navigation' %>
+      <%= yield %>
+    </body>
+    <%= render 'shared/footer' %>
+  </div>
 </html>
