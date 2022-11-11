@@ -28,7 +28,7 @@ begin
       am.save
 
       am = Call.create(
-        api: api, name: 'last-price', title: 'Last price',
+        api: api, name: 'last_price', title: 'Last price',
         link: 'https://cex.io/rest-api#last-price'
       )
       am.content.body = "<strong>GET https://cex.io/api/last_price/{symbol1}/{symbol2}</strong>"

@@ -10,6 +10,7 @@
 #   23.03.2022  Ruby 3.1.1 / Rails 7.0.2.3
 #   19.04.2022  Ruby 3.1.2
 #   20.05.2022	Rails 7.0.3
+#   10.11.2022  Rails 7.0.4
 #   
 #     rails new app --css bootstrap
 #
@@ -20,7 +21,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
-gem "rails", "~> 7.0.3" # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem "rails", "~> 7.0.4" # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 
 gem "sprockets-rails"   # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "puma"              # Use the Puma web server [https://github.com/puma/puma]

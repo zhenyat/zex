@@ -2,6 +2,19 @@ module Request
   extend ActiveSupport::Concern
   require 'net/http'
 
+  #############################
+  # Net:HTTP ZT Class
+  #
+  #   options sample:
+  #     {
+  #       :symbol => "BCHUSDT",
+  #       :interval => "1h",
+  #       :limit => 50
+  #     }
+  #
+  #   extension sample:
+  #     "hd/20221110/BTC/USD"
+  ##############################
   class  Request
     def initialize dotcom:, api:, call:, extension: nil, options: {}
       @dotcom    = dotcom
