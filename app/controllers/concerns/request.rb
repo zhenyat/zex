@@ -2,8 +2,12 @@ module Request
   extend ActiveSupport::Concern
   require 'net/http'
 
-  #############################
-  # Net:HTTP ZT Class
+  #########################################################
+  # Net::HTTP ZT Class:  
+  #   API Request with selected dotcom, API mode & Call 
+  #
+  #   extension sample:
+  #     "hd/20221110/BTC/USD"
   #
   #   options sample:
   #     {
@@ -11,10 +15,7 @@ module Request
   #       :interval => "1h",
   #       :limit => 50
   #     }
-  #
-  #   extension sample:
-  #     "hd/20221110/BTC/USD"
-  ##############################
+  #########################################################
   class  Request
     def initialize dotcom:, api:, call:, extension: nil, options: {}
       @dotcom    = dotcom
@@ -82,16 +83,21 @@ module Request
     # caller_locations(1,1)[0].label - the calling method
     #
     #   06.06.2022
+    #   13.11.2022  Modified
     ##############################################################################
     def request_error_check response
+      error_msg = nil
       if response.is_a? Hash
-        error_msg = response
-        error_msg[:called_by] = caller_locations(1,1)[0].label
-        response = []
+        if response['code'].present?
+          error_msg = "Code #{response['code']}: #{response['msg']}\n called by: #{caller_locations(1,1)[0].label}"
+        elsif response['error'].present?
+          error_msg = "Error: #{response['error']}\n called by: #{caller_locations(1,1)[0].label}"
+        else
+        end 
+        error_msg
       else
-        error_msg = {}
+        error_msg
       end
-      return response, error_msg
     end
 
     # Clones public_api calls to demo_api

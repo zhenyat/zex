@@ -70,6 +70,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_26_082117) do
     t.bigint "api_id", null: false
     t.string "name", null: false
     t.string "title", null: false
+    t.integer "kind", limit: 2, default: 0, null: false
     t.string "link"
     t.integer "status", limit: 2, default: 0, null: false
     t.datetime "created_at", null: false

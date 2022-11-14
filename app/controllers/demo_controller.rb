@@ -2,6 +2,7 @@ class DemoController < ApplicationController
   require 'csv'
 
   include ChartsPro
+  include DemoApiCalls
   include Request
 
   before_action :selected_from_dddl#, only: [:api_calls, :api_candlesticks, :api_trades]
@@ -15,13 +16,32 @@ class DemoController < ApplicationController
     @apis = @dotcom&.apis || []     # ActiveRecord::Associations::CollectionProxy of Apis
     if not @api.nil? and @api.mode == 'demo_api'
       api = Api.find_by dotcom: @dotcom, mode: 'public_api'
-      @calls = api.calls
+      @calls = api.calls.active.rest_get
     else
       @calls  = @api&.calls || []   # ActiveRecord::Associations::CollectionProxy of ApiMethods
     end
 
-    @request  = GetRequest.new(dotcom: @dotcom, api: @api, call: @call)
+    unless @call.nil?
+      extension = add_extension @dotcom.name, @call.name
+      options = add_options @dotcom.name, @call.name
+    end
+
+
+
+    @request  = GetRequest.new(dotcom: @dotcom, api: @api, call: @call, extension: extension, options: options)
+    # puts "============="
+    # ap @request
     @response = @request.send
+    ap @response
+    @error_msg = request_error_check @response
+    puts "@error_msg = #{@error_msg}"
+
+
+    # @data, @error_msg = request_error_check @response
+    # puts "===== data"
+    # ap @data
+    # puts "===== error_msg: #{@error_msg}"
+    
   end
 
   def api_candlesticks

@@ -65,63 +65,87 @@ begin
           api: api, name: 'trades', title: 'Market Data endpoints: Recent trades list',
           link: 'https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md#recent-trades-list'
         )
-        am.content.body = "<strong>GET \"https://api.binance.com/api/v3/trades?symbol=BTCUSDT</strong>\""
+        am.content.body = "<strong>GET \"https://api.binance.com/api/v3/trades?symbol=BTCUSDT\"</strong>"
         am.save
 
         am = Call.create(
           api: api, name: 'historicalTrades', title: 'Market Data endpoints: Old trade lookup (MARKET_DATA)',
+          status: 1,  # for old trades...
           link: 'https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md#old-trade-lookup-market_data'
         )
-        am.content.body = "GET /api/v3/historicalTrades"
+        am.content.body = "<strong>GET \"/api/v3/historicalTrades\"</strong>"
         am.save
 
         am = Call.create(
           api: api, name: 'aggTrades', title: 'Market Data endpoints: Compressed/Aggregate trades list',
           link: 'https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md#compressedaggregate-trades-list'
         )
-        am.content.body = "GET /api/v3/aggTrades"
+        am.content.body = "<strong>GET \"/api/v3/aggTrades\"</strong>"
         am.save
 
         am = Call.create(
           api: api, name: 'klines', title: 'Market Data endpoints: Kline/Candlestick data',
           link: 'https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md#klinecandlestick-data'
         )
-        am.content.body = "GET /api/v3/klines"
+        am.content.body = "<strong>GET \"/api/v3/klines\"</strong>"
         am.save
 
         am = Call.create(
           api: api, name: 'avgPrice', title: 'Market Data endpoints: Current average price',
           link: 'https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md#current-average-price'
         )
-        am.content.body = "GET /api/v3/avgPrice"
+        am.content.body = "<strong>GET \"/api/v3/avgPrice\"</strong>"
         am.save
 
         am = Call.create(
           api: api, name: 'ticker', title: 'Market Data endpoints: Ticker data',
-          link: 'https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md#24hr-ticker-price-change-statistics'
+          link: 'https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md#24hr-ticker-price-change-statistics',
         )
         am.content.body = "
           <h5>24hr ticker price change statistics</h5>
           <strong>GET \"/api/v3/ticker/24hr\"</strong><br>
-          24 hour rolling window price change statistics. Careful when accessing this with no symbol.<br>
-          <h5>Symbol price ticker</h5>
-          Best price/qty on the order book for a symbol or symbols.<br>
-          <strong>GET \"api/v3/ticker/price\"</strong><br>
-          <h5>Symbol order book ticker</h5>
-          Best price/qty on the order book for a symbol or symbols.<br>
-          <strong>GET \"api/v3/ticker/bookTicker\"</strong><br>
+          <p>24 hour rolling window price change statistics. Careful when accessing this with no symbol</p>
+          <strong>https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT</strong>    => response is <strong>Hash</strong>
+          <strong>https://api.binance.com/api/v3/ticker/24hr?symbols=[\"BTCUSDT\",\"BNBUSDT\"]</strong>  => response is <strong>Array</strong>
         "
         am.save
-  
+
+        am = Call.create(
+          api: api, name: 'ticker/price', title: 'Symbol price ticker',
+          link: 'https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md#symbol-price-ticker',
+        )
+        am.content.body = "
+          <h5>Symbol price ticker</h5>
+          <p>Latest price for a symbol or symbols</p>
+          <strong>GET \"GET /api/v3/ticker/price\"</strong><br>
+          <strong>https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT</strong>  => response is <strong>Hash</strong>
+          <strong>https://api.binance.com/api/v3/ticker/price?symbols=[\"BTCUSDT\",\"BNBUSDT\"]</strong>  => response is <strong>Array</strong>
+        "
+        am.save
+
+        am = Call.create(
+          api: api, name: 'ticker/bookTicker', title: 'Symbol order book ticker',
+          link: 'https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md#symbol-order-book-ticker',
+        )
+        am.content.body = "
+          <h5>Symbol order book ticker</h5>
+          <p>Best price/qty on the order book for a symbol or symbols</p>
+          <strong>GET \"GET /api/v3/ticker/bookTicker\"</strong><br>
+          <strong>https://api.binance.com/api/v3/bookTicker/price?symbol=BTCUSDT</strong>  => response is <strong>Hash</strong><br>
+          <strong>https://api.binance.com/api/v3/bookTicker/price?symbols=[\"BTCUSDT\",\"BNBUSDT\"]</strong>  => response is <strong>Array</strong>
+        "
+        am.save
+
       elsif api.mode == 'private_api'
         am = Call.create(
           api: api, name: 'order', title: 'Account endpoints: Orders',
+          kind: 1,
           link: 'https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md#new-order--trade'
         )
         am.content.body = "
           <h5>New order (TRADE)</h5>
           Send in a new OCO<br>
-          <strong>POST /api/v3/order (HMAC SHA256)</strong>
+          <strong>POST \"/api/v3/order (HMAC SHA256)\"</strong>
           <h5>Test new order (TRADE)</h5>
           Test new order creation and signature/recvWindow long.<br>
           Creates and validates a new order but does not send it into the matching engine.<br>

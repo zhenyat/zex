@@ -43,7 +43,8 @@ begin
       am.save
 
       am = Call.create(
-        api: api, name: 'converter', title: 'Converter',
+        api: api, name: 'convert', title: 'Converter',
+        kind: 1,
         link: 'https://cex.io/rest-api#converter'
       )
       am.content.body = "<strong>POST https://cex.io/api/convert/{symbol1}/{symbol2}</strong>"
@@ -51,6 +52,7 @@ begin
 
       am = Call.create(
         api: api, name: 'price_stats', title: 'Chart',
+        kind: 1,
         link: 'https://cex.io/rest-api#chart'
       )
       am.content.body = "<strong>POST https://cex.io/api/price_stats/{symbol1}/{symbol2}</strong>"
@@ -87,6 +89,7 @@ begin
     elsif api.mode == 'private_api'
       am = Call.create(
         api: api, name: 'balance', title: 'Account balance',
+        kind: 1,
         link: 'https://cex.io/rest-api#account-balance'
       )
       am.content.body = "<strong>POST https://cex.io/api/balance/</strong>"
@@ -94,6 +97,7 @@ begin
 
       am = Call.create(
         api: api, name: 'open_orders', title: 'Open orders',
+        kind: 1,
         link: 'https://cex.io/rest-api#open-orders'
       )
       am.content.body = "
@@ -104,6 +108,7 @@ begin
 
       am = Call.create(
         api: api, name: 'active_orders_status', title: 'Active order status',
+        kind: 1,
         link: 'https://cex.io/rest-api#active-order-status'
       )
       am.content.body = "
@@ -113,6 +118,7 @@ begin
 
       am = Call.create(
         api: api, name: 'cancel_order', title: 'Cancel order',
+        kind: 1,
         link: 'https://cex.io/rest-api#cancel-order'
       )
       am.content.body = "
@@ -122,6 +128,7 @@ begin
 
       am = Call.create(
         api: api, name: 'cancel_orders', title: 'Cancel all orders for given pair',
+        kind: 1,
         link: 'https://cex.io/rest-api#cancel-all-orders-for-given-pair'
       )
       am.content.body = "
@@ -131,6 +138,7 @@ begin
 
       am = Call.create(
         api: api, name: 'place_order', title: 'Place order',
+        kind: 1,
         link: 'https://cex.io/rest-api#place-order'
       )
       am.content.body = "
@@ -140,6 +148,7 @@ begin
 
       am = Call.create(
         api: api, name: 'get_order', title: 'Get order details',
+        kind: 1,
         link: 'https://cex.io/rest-api#get-order-details'
       )
       am.content.body = "
@@ -149,6 +158,7 @@ begin
 
       am = Call.create(
         api: api, name: 'get_order_tx', title: 'Get order transactions',
+        kind: 1,
         link: 'https://cex.io/rest-api#get-order-transactions'
       )
       am.content.body = "
@@ -158,6 +168,7 @@ begin
 
       am = Call.create(
         api: api, name: 'get_address', title: 'Get crypto address',
+        kind: 1,
         link: 'https://cex.io/rest-api#get-crypto-address'
       )
       am.content.body = "<strong>POST https://cex.io/api/get_address/</strong>"
@@ -165,6 +176,7 @@ begin
 
       am = Call.create(
         api: api, name: 'get_crypto_address', title: 'Get all crypto addresses',
+        kind: 1,
         link: 'https://cex.io/rest-api#get-all-crypto-addresses'
       )
       am.content.body = "<strong>POST https://cex.io/api/get_crypto_address</strong>"
@@ -172,6 +184,7 @@ begin
 
       am = Call.create(
         api: api, name: 'get_myfee', title: 'Get my fee',
+        kind: 1,
         link: 'https://cex.io/rest-api#get-my-fee'
       )
       am.content.body = "<strong>POST https://cex.io/api/get_myfee/</strong>"
@@ -179,6 +192,7 @@ begin
 
       am = Call.create(
         api: api, name: 'cancel_replace_order', title: 'Cancel replace order',
+        kind: 1,
         link: 'https://cex.io/rest-api#cancel-replace-order'
       )
       am.content.body = "
