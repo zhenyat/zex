@@ -26,21 +26,9 @@ class DemoController < ApplicationController
       options = add_options @dotcom.name, @call.name
     end
 
-
-
     @request  = GetRequest.new(dotcom: @dotcom, api: @api, call: @call, extension: extension, options: options)
-    # puts "============="
-    # ap @request
     @response = @request.send
-    ap @response
     @error_msg = request_error_check @response
-    puts "@error_msg = #{@error_msg}"
-
-
-    # @data, @error_msg = request_error_check @response
-    # puts "===== data"
-    # ap @data
-    # puts "===== error_msg: #{@error_msg}"
     
   end
 
@@ -128,7 +116,6 @@ class DemoController < ApplicationController
 
     file = "tmp/data/Binance/BTCUSDT-3m-2022-01.csv"
     data = CSV.read(file)
-    puts "======", data.count, candlestick.inspect
     t_start = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 
     data.each do  |datum|
