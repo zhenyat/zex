@@ -1,4 +1,7 @@
 module Request
+  #########################################################
+  # Shell to provide Net::HTTP for different platforms
+  #########################################################
   extend ActiveSupport::Concern
   require 'net/http'
 
@@ -44,6 +47,14 @@ module Request
     def options
       @options.presence
     end
+
+    def uri
+      url = @api.endpoint + "/" + @call.name + "/"  # Must be ended with '/'
+      url << "#{@extension}" unless @extension.nil?
+      uri = URI url
+      uri.query = URI.encode_www_form(options) unless options.nil?
+      uri
+    end
   end
 
   class GetRequest < Request
@@ -60,13 +71,31 @@ module Request
         end
       end
     end
+  end
 
-    def uri
-      url = @api.endpoint + "/" + @call.name
-      url << "/#{@extension}" unless @extension.nil?
-      uri = URI url
-      uri.query = URI.encode_www_form(options) unless options.nil?
-      uri
+  class PostRequest < Request
+    def send_post body: {}
+      # header = {
+      #   "Content-Type" => "application/json",
+      #   "Accept" => "application/json"
+      # }
+      begin
+        response = Net::HTTP.post_form self.uri, body
+        # response = Net::HTTP.post self.uri, body.to_json, header
+      rescue StandardError => e
+        {error: e}
+      else
+        begin 
+          JSON.parse response.body     # => Hash
+        rescue
+          {error: "HTTP.post(#{self.uri}) failed"} 
+        end
+      end
+    end
+
+    def signature nonce
+      message = nonce + api.user + api.show_key
+      OpenSSL::HMAC.hexdigest("SHA256", api.show_secret, message)
     end
   end
 

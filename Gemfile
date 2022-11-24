@@ -45,8 +45,6 @@ gem 'pg_search'         # https://mkdev.me/posts/kak-delat-full-text-poisk-v-rai
 gem 'seed_dump'         # https://github.com/rroblak/seed_dump
 gem 'seedbank'          # http://github.com/james2m/seedbank
 
-# gem 'ancestry'          # https://github.com/stefankroes/ancestry
-
 gem 'simple_form'       # https://github.com/plataformatec/simple_form
 gem 'enum_help'         # MUST BE for simple form
 gem 'translate_enum'
@@ -57,30 +55,6 @@ gem 'countries'
 gem 'rack-cors'
 gem 'devise'                       # https://github.com/plataformatec/devise
 gem 'devise_token_auth', github:  'lynndylanhurley/devise_token_auth'
-
-# crono for jobs
-# gem 'crono'
-# gem 'daemons'
-# gem 'sinatra', require: nil      # to run web-console for crono
-
-# gem 'whenever', :require => false
-# gem "simple_scheduler"
-
-# Charts
-# gem 'gon'
-# gem 'fusioncharts-rails'
-# gem 'chartkick'
-
-# gem 'rest-client'                # https://github.com/rest-client/rest-client
-
-# gem "acts_as_list"               # https://github.com/swanandp/acts_as_list
-# gem 'acts-as-taggable-on'        # https://github.com/mbleigh/acts-as-taggable-on
-
-# gem 'redis'                      # Use Redis adapter to run Action Cable in production
-
-# MH 3-rd Edition
-# gem 'faker'
-# gem 'fog'
 ########################################
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

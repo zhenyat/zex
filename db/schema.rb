@@ -57,8 +57,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_26_082117) do
     t.integer "mode", limit: 2, default: 0, null: false
     t.string "base_url"
     t.string "path"
-    t.string "key"
-    t.string "secret"
     t.string "user"
     t.integer "status", limit: 2, default: 0, null: false
     t.datetime "created_at", null: false

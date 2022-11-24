@@ -5,8 +5,6 @@ class CreateApis < ActiveRecord::Migration[7.0]
       t.integer    :mode,     null: false, default: 0, limit: 1
       t.string     :base_url
       t.string     :path
-      t.string     :key
-      t.string     :secret
       t.string     :user
       t.integer    :status,   null: false, default: 0, limit: 1
 

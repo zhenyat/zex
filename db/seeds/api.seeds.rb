@@ -7,8 +7,7 @@ begin
           user:     Rails.application.credentials.config[dotcom.name.to_sym][mode.first.to_sym][:user],
           base_url: Rails.application.credentials.config[dotcom.name.to_sym][mode.first.to_sym][:base_url],
           path:     Rails.application.credentials.config[dotcom.name.to_sym][mode.first.to_sym][:path],
-          key:      Rails.application.credentials.config[dotcom.name.to_sym][mode.first.to_sym][:key]
-          # !! Don't save secret in DB
+          # !! Don't save key & secret in DB
         )
 
       end

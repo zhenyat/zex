@@ -24,12 +24,25 @@ class DemoController < ApplicationController
     unless @call.nil?
       extension = add_extension @dotcom.name, @call.name
       options = add_options @dotcom.name, @call.name
-    end
 
-    @request  = GetRequest.new(dotcom: @dotcom, api: @api, call: @call, extension: extension, options: options)
-    @response = @request.send
-    @error_msg = request_error_check @response
-    
+      if (@call.rest_get?)
+        @request  = GetRequest.new(dotcom: @dotcom, api: @api, call: @call, extension: extension, options: options)
+        @response = @request.send
+        @error_msg = request_error_check @response
+      else
+        @request = PostRequest.new(dotcom: @dotcom, api: @api, call: @call, extension: extension, options: options)
+        if @api.private_api?
+          nonce = (Time.new.to_f*1000).to_i.to_s  # msec
+          signature = @request.signature nonce
+        end
+        if @call.name == 'balance'
+          body = {"nonce": nonce, "key":  @api.show_key, "signature": signature}
+        else
+          body = {"amnt": "2.5"}
+        end
+        @response = @request.send_post(body: body)
+      end
+    end
   end
 
   def api_candlesticks

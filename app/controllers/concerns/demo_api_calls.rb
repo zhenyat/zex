@@ -16,6 +16,8 @@ module DemoApiCalls
 
     when 'cexio'
       case call_name
+        when 'convert'
+          'BTC/USD'
         when 'last_price', 'order_book', 'trade_history'
           'BTC/USD'
         when 'last_prices'
@@ -35,7 +37,7 @@ module DemoApiCalls
     case dotcom_name
       when 'binance'
           case call_name
-            when "avgPrice", "ticker"
+            when "avgPrice", "ticker", "exchangeInfo"
             {symbol: 'BTCUSDT'}
           when "depth"
             {symbol: 'BTCUSDT', limit: 10}
@@ -50,9 +52,17 @@ module DemoApiCalls
           end
 
       when 'cexio'
-        {}
+        case call_name
+          when 'balance'
+            {}
+          when 'convert'
+            {}
+          else
+            {}
+        end
+  
       else
-        {}    
-    end
+        {} 
+    end   
   end
 end
