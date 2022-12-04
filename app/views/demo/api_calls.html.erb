@@ -1,4 +1,3 @@
-
 <h1>Demo: API Calls</h1>
 
 <div class="block">
@@ -18,7 +17,7 @@
 <% if @call %>
   <div class="block mt-4">
     <table class="table table-striped table-primary table-sm">
-      <caption class="caption-top">Request parameters:</caption>
+      <caption class="caption-top text-primary">Request parameters:</caption>
       <tr>
         <td>Dotcom:</td>
         <td><%= @call.api.dotcom.name %></td>
@@ -28,18 +27,35 @@
         <td><%= @api.mode %></td>
       </tr>
       <tr>
+        <td>HTTP Method:</td>
+        <% method = @call.rest_get? ? 'GET' : 'POST' %>
+        <td><%= method %></td>
+      </tr>
+      <tr>
         <td>Call:</td>
-        <td><%= @call.name %></td>
+        <td><div class="fw-bold d-inline-block"><%= "#{@call.name}" %></div> <%="(#{@call.title})" %></td>
       </tr>
       <tr>
         <td>URI:</td>
         <td><%= @request.uri %></td>
       </tr>
+      <tr>
+        <td>Extension:</td>
+        <td><%= @request.extension.nil? ? "nil" : @request.extension %></td>
+      </tr>
+      <tr>
+        <td>Options:</td>
+        <td><%= @request.options.present? ? @request.options : "{}" %></td>
+      </tr>
+      <tr>
+        <td>Body:</td>
+        <td><%= @body.present? ? @body : "{}" %></td>
+      </tr>
     </table>
   </div>
   <div>
     <% if @error_msg.nil? %>
-      <h6>Reponse</h6>
+      <h6 class="text-primary">Reponse</h6>
       <div class="block mb-4 bg-info" style="--bs-bg-opacity: .25;">
         <%=ap(@response, plain: true, indent: 2).html_safe %>
       </div>

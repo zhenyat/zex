@@ -49,7 +49,7 @@ module Request
     end
 
     def uri
-      url = @api.endpoint + "/" + @call.name + "/"  # Must be ended with '/'
+      url = @api.endpoint + "/" + @call.name  # NO '/' at the end
       url << "#{@extension}" unless @extension.nil?
       uri = URI url
       uri.query = URI.encode_www_form(options) unless options.nil?
@@ -74,7 +74,19 @@ module Request
   end
 
   class PostRequest < Request
-    def send_post body: {}
+    attr_accessor :nonce, :signature
+  
+    # def initialize dotcom:, api:, call:, extension: nil, options: {}
+    def initialize(dotcom:, api:, call:, extension:, options:)
+      super(dotcom:, api:, call:, extension:, options:)
+
+      if api.private_api?
+        @nonce = (Time.new.to_f*1000).to_i.to_s  # msec
+        @signature = set_signature
+      end
+    end
+
+    def send body: {}
       # header = {
       #   "Content-Type" => "application/json",
       #   "Accept" => "application/json"
@@ -93,9 +105,13 @@ module Request
       end
     end
 
-    def signature nonce
-      message = nonce + api.user + api.show_key
-      OpenSSL::HMAC.hexdigest("SHA256", api.show_secret, message)
+    # def set_nonce
+    #   self.nonce = (Time.new.to_f*1000).to_i.to_s  # msec
+    # end
+
+    def set_signature
+      message = @nonce + api.user + api.show_key
+      OpenSSL::HMAC.hexdigest("SHA256", @api.show_secret, message)
     end
   end
 

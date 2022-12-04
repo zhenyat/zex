@@ -4,6 +4,7 @@
       <th>Dotcom</th>
       <th><%= Call.human_attribute_name(:api) %></th>
       <th><%= Call.human_attribute_name(:name) %></th>
+      <th><%= "HTTP Method" %></th>
       <th><%= Call.human_attribute_name(:title) %></th>
       <!--th><%= Call.human_attribute_name(:link) %></th-->
       <th><%= t 'status.status' %></th>
@@ -16,6 +17,11 @@
         <td><%= call.api.dotcom.name %></td>
         <td><%= call.api.mode %></td>
         <td><%= call.name %></td>
+        <% if call.rest_get? %>
+          <td>GET</td>
+        <% else %>
+          <td>POST</td>
+        <% end %>
         <td><%= call.title %></td>
         <!--td><%= call.link %></td-->
         <td><%= status_mark call.status %></td>

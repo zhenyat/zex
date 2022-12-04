@@ -2,7 +2,7 @@ class DemoController < ApplicationController
   require 'csv'
 
   include ChartsPro
-  include DemoApiCalls
+  include DemoApiParams
   include Request
 
   before_action :selected_from_dddl#, only: [:api_calls, :api_candlesticks, :api_trades]
@@ -22,26 +22,15 @@ class DemoController < ApplicationController
     end
 
     unless @call.nil?
-      extension = add_extension @dotcom.name, @call.name
-      options = add_options @dotcom.name, @call.name
-
       if (@call.rest_get?)
-        @request  = GetRequest.new(dotcom: @dotcom, api: @api, call: @call, extension: extension, options: options)
+        @request  = GetRequest.new(dotcom: @dotcom, api: @api, call: @call, extension: demo_extension, options: demo_options)
         @response = @request.send
-        @error_msg = request_error_check @response
       else
-        @request = PostRequest.new(dotcom: @dotcom, api: @api, call: @call, extension: extension, options: options)
-        if @api.private_api?
-          nonce = (Time.new.to_f*1000).to_i.to_s  # msec
-          signature = @request.signature nonce
-        end
-        if @call.name == 'balance'
-          body = {"nonce": nonce, "key":  @api.show_key, "signature": signature}
-        else
-          body = {"amnt": "2.5"}
-        end
-        @response = @request.send_post(body: body)
+        @request  = PostRequest.new(dotcom: @dotcom, api: @api, call: @call, extension: demo_extension, options: demo_options)
+        @body     = demo_body
+        @response = @request.send(body: @body)
       end
+      @error_msg = request_error_check @response
     end
   end
 
