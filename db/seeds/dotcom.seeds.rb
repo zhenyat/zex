@@ -1,5 +1,5 @@
 begin
-  if (Dotcom.present? and not Dotcom.exists?)
+  if (Dotcom.present? and not Dotcom.exist?)
     Dotcom.create name: 'binance',  title: 'Binance Holdings Ltd'
     Dotcom.create name: 'cexio',    title: 'CEX.IO'
     Dotcom.create name: 'coinbase', title: 'Coinbase Global, Inc.', status: 1

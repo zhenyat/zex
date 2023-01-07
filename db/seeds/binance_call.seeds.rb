@@ -1,5 +1,5 @@
 begin
-  if (Call.present? and not Call.exists?)
+  if (Call.present? and not Call.exist?)
     dotcom = Dotcom.find_by name: 'binance'
     apis = Api.where dotcom: dotcom
     apis.each do |api|

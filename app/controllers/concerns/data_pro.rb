@@ -43,10 +43,10 @@ module DataPro
   def fetch_cashed_data  pair_name
     filename = set_filename pair_name
     
-    if File.exists? filename
+    if File.exist? filename
       JSON.parse File.read filename # get existing data from the file
     else
-      [false, "Error: the file '#{filename}' doesn't exists"]
+      [false, "Error: the file '#{filename}' doesn't exist"]
     end
   end
 
@@ -160,7 +160,7 @@ module DataPro
   def update_cashed_data  pair_name, data_array
 #    filename = set_filename pair_name
 #
-#    if File.exists? filename
+#    if File.exist? filename
 #      candles = File.read filename  # get existing data from the file
 #      candles.shift                 # remove first element
 #      candles.pop                   # remove last  element (to be replaced)

@@ -1,5 +1,5 @@
 begin
-  if (Api.present? and not Api.exists?)
+  if (Api.present? and not Api.exist?)
     Dotcom.active.each do |dotcom|
       Api.modes.each do |mode|
         Api.create(

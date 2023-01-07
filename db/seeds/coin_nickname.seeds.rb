@@ -1,5 +1,5 @@
 begin
-  if (CoinNickname.present? and not CoinNickname.exists?)
+  if (CoinNickname.present? and not CoinNickname.exist?)
     CoinNickname.create coin_id: Coin.find_by(code: 'EUR').id, name: 'Single currency'
     CoinNickname.create coin_id: Coin.find_by(code: 'EUR').id, name: 'Fiber'
     CoinNickname.create coin_id: Coin.find_by(code: 'GBP').id, name: 'Sterling'

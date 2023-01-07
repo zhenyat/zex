@@ -1,5 +1,5 @@
 begin
-  if (Pair.present? and not Pair.exists?)
+  if (Pair.present? and not Pair.exist?)
     ### Base Currency: Euro
     base_id = Coin.find_by(code: 'EUR').id
     puts "--- Base: EUR"

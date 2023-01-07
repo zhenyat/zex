@@ -1,5 +1,5 @@
 begin
-  if (Coin.present? and not Coin.exists?)
+  if (Coin.present? and not Coin.exist?)
     Coin.create name: 'Euro',               code: 'EUR', kind: 'fiat', unicode: "€"
     Coin.create name: 'British Pound',      code: 'GBP', kind: 'fiat', unicode: "£"
     Coin.create name: 'Australian Dollar',  code: 'AUD', kind: 'fiat', unicode: "A$", status: 'archived'

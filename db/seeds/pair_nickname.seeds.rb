@@ -1,5 +1,5 @@
 begin
-  if (PairNickname.present? and not PairNickname.exists?)
+  if (PairNickname.present? and not PairNickname.exist?)
     PairNickname.create pair_id: Pair.find_by(code: 'EUR/USD').id, name: 'EURO'
     PairNickname.create pair_id: Pair.find_by(code: 'EUR/USD').id, name: 'Fiber'
     PairNickname.create pair_id: Pair.find_by(code: 'EUR/GBP').id, name: 'Chunnel'

@@ -1,5 +1,5 @@
 begin
-  if (Sample.present? and not Sample.exists?)
+  if (Sample.present? and not Sample.exist?)
     Sample.create!([
       { name:   'hemp_paste', 
         title:  'Паста конопляная Классическая 200 г',
