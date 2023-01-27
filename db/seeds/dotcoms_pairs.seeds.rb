@@ -45,6 +45,6 @@ begin
   puts "CEX.IO #{cexio.pairs.count} pairs added"
 
 rescue StandardError, AnotherError => e
-  puts "----- Achtung! Something went wrong..."
+  puts "----- Attention! Something went wrong..."
   puts "#{e.inspect}"
 end

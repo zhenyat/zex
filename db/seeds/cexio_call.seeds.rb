@@ -206,6 +206,6 @@ begin
   end
   puts "===== 'CEX.IO Call' #{Call.count - existing_methdos} record(s) created"
 rescue StandardError, AnotherError => e
-  puts "----- Achtung! Something went wrong..."
+  puts "----- Attention! Something went wrong..."
   puts "#{e.inspect}"
 end

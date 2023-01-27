@@ -19,7 +19,7 @@
         <td><%= api.mode %></td>
         <td><%= api.base_url %></td>
         <td><%= api.path %></td>
-        <td><%= key_tail(api.key) if not api.key.blank? %></td>
+        <td><%= key_tail(api.show_key) if api.show_key.present? %></td>
         <td><%= key_tail(api.show_secret) if not api.show_secret.blank?%></td>
         <td><%= api.user %></td>
         <td><%= status_mark api.status %></td>

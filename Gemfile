@@ -12,6 +12,7 @@
 #   20.05.2022	Rails 7.0.3
 #   10.11.2022  Rails 7.0.4
 #   07.01.2023  Ruby 3.2.0: File depricated methods removed
+#   27.01.2023  Rails 7.0.4.2
 #   
 #     rails new app --css bootstrap
 #
