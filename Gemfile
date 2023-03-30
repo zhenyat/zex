@@ -13,6 +13,8 @@
 #   10.11.2022  Rails 7.0.4
 #   07.01.2023  Ruby 3.2.0: File depricated methods removed
 #   27.01.2023  Rails 7.0.4.2
+#   22.03.2023  Ruby 3.2.1, Rails 7.0.4.3
+#   30.03.2023  Psych workaround (v. < 4)
 #   
 #     rails new app --css bootstrap
 #
@@ -22,8 +24,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.2.0"
+ruby "3.2.1"
 gem "rails", "~> 7.0.4" # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'psych', '< 4'
 
 gem "sprockets-rails"   # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "puma"              # Use the Puma web server [https://github.com/puma/puma]
